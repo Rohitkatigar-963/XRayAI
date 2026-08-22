@@ -1,0 +1,1865 @@
+
+:root {
+  --bg-dark: #020617;
+  --bg-light: #f8fafc;
+  --card-dark: rgba(255, 255, 255, 0.08);
+  --card-light: rgba(255, 255, 255, 0.75);
+  --text-dark: #e5e7eb;
+  --text-light: #020617;
+  --accent: #22c55e;
+  --blue: #38bdf8;
+  --red: #ef4444;
+  --purple: #8b5cf6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.bg-blur {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(34, 197, 94, 0.2), transparent 60%);
+  filter: blur(80px);
+  z-index: -1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+/* =========================================================
+   XRAYAI 3D ANIMATED BRAND
+========================================================= */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  cursor: default;
+
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+ ANIMATED LUNGS LOGO
+========================================================= */
+
+.brand-lungs {
+  display: inline-block;
+
+  font-size: 2rem;
+
+  transform-style: preserve-3d;
+
+  filter:
+      drop-shadow(0 5px 8px rgba(0, 0, 0, 0.35))
+      drop-shadow(0 0 8px rgba(56, 189, 248, 0.25));
+
+  animation:
+      lungsFloat 3s ease-in-out infinite,
+      lungsBreathe 2.5s ease-in-out infinite;
+
+  transition:
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      filter 0.35s ease;
+}
+
+
+/* LUNGS HOVER */
+
+.brand:hover .brand-lungs {
+
+  transform:
+      translateY(-6px)
+      rotateY(15deg)
+      rotateZ(-5deg)
+      scale(1.18);
+
+  filter:
+      drop-shadow(0 12px 12px rgba(0, 0, 0, 0.45))
+      drop-shadow(0 0 15px rgba(56, 189, 248, 0.55))
+      drop-shadow(0 0 25px rgba(34, 197, 94, 0.3));
+}
+
+
+/* =========================================================
+ XRAYAI BRAND TEXT
+========================================================= */
+
+.brand-text {
+  display: inline-block;
+
+  background:
+      linear-gradient(
+          135deg,
+          #ffffff,
+          #dbeafe,
+          #38bdf8
+      );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+      0 5px 15px rgba(0, 0, 0, 0.25);
+
+  transition:
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      filter 0.35s ease;
+
+  animation:
+      brandTextFloat 4s ease-in-out infinite;
+}
+
+
+/* BRAND TEXT 3D HOVER */
+
+.brand:hover .brand-text {
+
+  transform:
+      translateY(-4px)
+      translateZ(20px)
+      scale(1.06);
+
+  filter:
+      drop-shadow(
+          0 10px 12px
+          rgba(56, 189, 248, 0.35)
+      );
+}
+
+
+/* =========================================================
+ LUNGS FLOATING
+========================================================= */
+
+@keyframes lungsFloat {
+
+  0%,
+  100% {
+      transform: translateY(0);
+  }
+
+  50% {
+      transform: translateY(-4px);
+  }
+
+}
+
+
+/* =========================================================
+ LUNGS BREATHING EFFECT
+========================================================= */
+
+@keyframes lungsBreathe {
+
+  0%,
+  100% {
+      scale: 1;
+  }
+
+  50% {
+      scale: 1.08;
+  }
+
+}
+
+
+/* =========================================================
+ XRAYAI TEXT FLOAT
+========================================================= */
+
+@keyframes brandTextFloat {
+
+  0%,
+  100% {
+      translate: 0 0;
+  }
+
+  50% {
+      translate: 0 -2px;
+  }
+
+}
+
+#themeToggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#themeToggle:hover {
+  transform: scale(1.1) rotate(8deg);
+  background: rgba(255,255,255,0.1);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px 100px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeUp 1s ease;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #38bdf8, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+.glass {
+  background: var(--card-dark);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.upload-card {
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.upload-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+
+.upload-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 30px;
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.upload-zone:hover {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.05);
+}
+
+.preview img {
+  max-width: 240px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  animation: pop 0.6s ease;
+}
+
+.analyze-btn {
+  margin-top: 20px;
+  padding: 14px 30px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #22c55e, #38bdf8);
+  color: #022c22;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analyze-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 40px rgba(56,189,248,0.5);
+}
+
+.result {
+  margin-top: 40px;
+  padding: 30px;
+  animation: fadeUp 1s ease;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.bars .bar {
+  margin-bottom: 12px;
+}
+
+.bar-track {
+  background: #1f2933;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 14px;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+
+.covid { background: linear-gradient(90deg, #ef4444, #f97316); }
+.pneumonia { background: linear-gradient(90deg, #8b5cf6, #6366f1); }
+.normal { background: linear-gradient(90deg, #22c55e, #4ade80); }
+
+.disclaimer {
+  margin-top: 20px;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+footer {
+  text-align: center;
+  opacity: 0.6;
+  padding: 40px 10px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Light mode */
+body.light {
+  background: radial-gradient(circle at top left, #f8fafc, #e5e7eb);
+  color: var(--text-light);
+}
+
+body.light .glass {
+  background: var(--card-light);
+  color: #020617;
+}
+
+body.light .upload-zone {
+  border-color: rgba(0,0,0,0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+
+.graph-title {
+  margin-top: 30px;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.graph-3d {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 30px;
+  margin-top: 25px;
+  perspective: 800px;
+}
+
+.graph-bar {
+  width: 90px;
+  height: 220px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  transform: rotateX(12deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.graph-bar:hover {
+  transform: rotateX(0deg) scale(1.1);
+  box-shadow: 0 25px 70px rgba(56,189,248,0.6);
+}
+
+.graph-bar span {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.graph-fill {
+  width: 100%;
+  height: 0%;
+  border-radius: 10px;
+  transition: height 1.4s cubic-bezier(.2,.8,.2,1);
+  box-shadow: inset 0 -10px 20px rgba(0,0,0,0.3);
+}
+
+.covid-3d .graph-fill {
+  background: linear-gradient(180deg, #ef4444, #f97316);
+}
+
+.pneumonia-3d .graph-fill {
+  background: linear-gradient(180deg, #8b5cf6, #6366f1);
+}
+
+.normal-3d .graph-fill {
+  background: linear-gradient(180deg, #22c55e, #4ade80);
+}
+
+
+
+.bar-percent {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #020617;
+  background: rgba(255,255,255,0.8);
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+.bar-fill {
+  position: relative;
+}
+
+.graph-percent {
+  position: absolute;
+  bottom: 10px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #020617;
+  background: rgba(255,255,255,0.9);
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  transform: translateZ(30px);
+  animation: floatUp 1s ease;
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(10px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+
+/* ================= AUTH PAGES ================= */
+
+.auth-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(56,189,248,0.3), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,0.3), transparent 60%);
+  filter: blur(100px);
+  z-index: -1;
+}
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 380px;
+  padding: 40px;
+  text-align: center;
+  animation: fadeUp 0.8s ease;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.auth-card:hover {
+  transform: rotateY(6deg) rotateX(4deg);
+}
+
+.auth-card h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  opacity: 0.7;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.4);
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 0.7rem;
+  background: #020617;
+  padding: 0 6px;
+  border-radius: 6px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #22c55e, #38bdf8);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 40px rgba(56,189,248,0.5);
+}
+
+.switch-link {
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+.switch-link a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ================= HISTORY ================= */
+
+/* ================= HISTORY FIX ================= */
+
+.history-stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-bottom:40px;
+}
+
+.history-stats .stat{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  min-height:120px;
+  gap:15px;
+}
+
+.history-stats .stat span{
+  font-size:1.2rem;
+  opacity:0.8;
+}
+
+.history-stats .stat strong{
+  font-size:2.3rem;
+  font-weight:800;
+  color:#38bdf8;
+}
+
+.history-search{
+  width:100%;
+  padding:18px 24px;
+  margin:30px 0 40px;
+  border:none;
+  border-radius:16px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  font-size:1rem;
+  outline:none;
+}
+
+.history-search::placeholder{
+  color:rgba(255,255,255,0.5);
+}
+
+.history-card{
+  padding:32px;
+  margin-bottom:30px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  border-radius:24px;
+}
+
+.history-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:15px;
+}
+
+.history-top h2{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.history-date{
+  opacity:0.7;
+  font-size:1rem;
+}
+
+.history-confidence{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-size:1.1rem;
+}
+
+.bar-track{
+  height:20px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.08);
+}
+
+.analyze-btn{
+  width:220px;
+}
+
+
+/* =========================================================
+   3D ANIMATED HERO TITLE
+========================================================= */
+
+.hero h1 {
+  display: inline-block;
+
+  color: transparent !important;
+
+  background:
+      linear-gradient(
+          90deg,
+          #ef4444,
+          #ff5a5a,
+          #f97316,
+          #ef4444
+      );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent !important;
+
+  cursor: default;
+
+  transform-style: preserve-3d;
+
+  filter:
+      drop-shadow(
+          0 8px 12px
+          rgba(0, 0, 0, 0.4)
+      );
+
+  animation:
+      heroTitleFloat 4s ease-in-out infinite,
+      heroGradientMove 6s linear infinite;
+
+  transition:
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      filter 0.4s ease;
+}
+
+
+/* 3D HOVER */
+
+.hero h1:hover {
+
+  transform:
+      translateY(-7px)
+      scale(1.035)
+      perspective(700px)
+      rotateX(4deg);
+
+  filter:
+      drop-shadow(
+          0 14px 15px
+          rgba(0, 0, 0, 0.5)
+      )
+      drop-shadow(
+          0 0 16px
+          rgba(239, 68, 68, 0.35)
+      );
+}
+
+
+/* FLOATING ANIMATION */
+
+@keyframes heroTitleFloat {
+
+  0%,
+  100% {
+      translate: 0 0;
+  }
+
+  50% {
+      translate: 0 -5px;
+  }
+
+}
+
+
+/* MOVING GRADIENT */
+
+@keyframes heroGradientMove {
+
+  0% {
+      background-position: 0% center;
+  }
+
+  100% {
+      background-position: 250% center;
+  }
+
+}
+
+
+
+.history-nav-btn{
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #22c55e, #38bdf8);
+  color: #021617;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.history-nav-btn:hover{
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(56,189,248,0.45);
+}
+
+.history-nav-btn:visited{
+  color: #021617;
+}
+
+
+body.light #themeToggle {
+  background: rgba(2, 6, 23, 0.22);
+  border: 1px solid rgba(2, 6, 23, 0.30);
+  color: #020617;
+}
+body.light #themeToggle:hover {
+  background: rgba(2, 6, 23, 0.15);
+}
+
+
+.delete-btn{
+  margin-top: 20px;
+  padding: 14px 30px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.delete-btn:hover{
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 40px rgba(239,68,68,0.45);
+}
+
+
+.profile-btn{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(
+      135deg,
+      #38bdf8,
+      #22c55e
+  );
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  font-size:1.4rem;
+  color:#021617;
+  font-weight:700;
+  transition:all 0.3s ease;
+}
+
+.profile-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:0 10px 35px rgba(
+      56,
+      189,
+      248,
+      0.45
+  );
+}
+
+.profile-btn:visited{
+  color:#021617;
+}
+
+
+
+.profile-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:linear-gradient(
+      135deg,
+      #38bdf8,
+      #22c55e
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+  color:#021617;
+  font-size:1.1rem;
+  font-weight:800;
+  letter-spacing:1px;
+
+  transition:all 0.3s ease;
+}
+
+.profile-btn:hover{
+  transform:translateY(-2px) scale(1.08);
+
+  box-shadow:
+      0 10px 30px rgba(
+          56,
+          189,
+          248,
+          0.45
+      );
+}
+
+
+
+.profile-card{
+  padding:50px;
+}
+
+.profile-header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:50px;
+}
+
+.profile-large{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+
+  background:linear-gradient(
+      135deg,
+      #38bdf8,
+      #22c55e
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:3rem;
+  font-weight:800;
+  color:#021617;
+
+  margin-bottom:25px;
+
+  box-shadow:
+      0 20px 60px rgba(
+          56,
+          189,
+          248,
+          0.35
+      );
+}
+
+#profileName{
+  font-size:3rem;
+  margin-bottom:12px;
+  text-align:center;
+}
+
+#profileEmail{
+  font-size:1.2rem;
+  opacity:0.75;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.profile-stats{
+  display:grid;
+  grid-template-columns:
+      repeat(
+          auto-fit,
+          minmax(220px,1fr)
+      );
+
+  gap:25px;
+  margin-top:20px;
+}
+
+
+
+.account-info{
+  margin:40px 0;
+  padding:30px;
+  border-radius:24px;
+}
+
+.account-info h2{
+  font-size:2rem;
+  margin-bottom:25px;
+  text-align:center;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.info-row:last-child{
+  border-bottom:none;
+}
+
+.info-row span{
+  font-size:1.15rem;
+  opacity:0.85;
+}
+
+.info-row strong{
+  font-size:1.2rem;
+  color:#38bdf8;
+}
+
+
+
+/* ================= CHATBOT ================= */
+
+#chatButton{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: linear-gradient(
+      135deg,
+      #38bdf8,
+      #22c55e
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 32px;
+  cursor: pointer;
+
+  z-index: 99999;
+
+  color: white;
+
+  box-shadow:
+      0 0 25px rgba(56,189,248,0.45),
+      0 0 50px rgba(34,197,94,0.35);
+
+  transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease;
+
+  animation:
+      chatPulse 2.5s infinite ease-in-out,
+      chatFloat 4s infinite ease-in-out;
+}
+
+#chatButton:hover{
+  transform:
+      translateY(-8px)
+      scale(1.1);
+
+  box-shadow:
+      0 15px 50px rgba(56,189,248,0.75),
+      0 0 80px rgba(34,197,94,0.55);
+}
+
+@keyframes chatPulse{
+  0%{
+      box-shadow:
+          0 0 20px rgba(56,189,248,0.35);
+  }
+
+  50%{
+      box-shadow:
+          0 0 50px rgba(56,189,248,0.75),
+          0 0 80px rgba(34,197,94,0.55);
+  }
+
+  100%{
+      box-shadow:
+          0 0 20px rgba(56,189,248,0.35);
+  }
+}
+
+@keyframes chatFloat{
+  0%{
+      transform: translateY(0px);
+  }
+
+  50%{
+      transform: translateY(-8px);
+  }
+
+  100%{
+      transform: translateY(0px);
+  }
+}
+
+#chatWindow{
+  position: fixed;
+  bottom: 120px;
+  right: 30px;
+
+  width: 420px;
+  height: 520px;
+  max-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+
+  background:
+      linear-gradient(
+          145deg,
+          rgba(15,23,42,0.97),
+          rgba(2,6,23,0.98)
+      );
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  z-index: 99998;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+      0 25px 80px rgba(0,0,0,0.7);
+}
+
+/* THIS IS THE IMPORTANT PART */
+/* =========================================================
+   CHAT WINDOW SMOOTH OPEN / CLOSE
+========================================================= */
+
+#chatWindow {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+      translateY(0)
+      scale(1);
+
+  transform-origin:
+      bottom right;
+
+  transition:
+      opacity 0.3s ease,
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      visibility 0.3s ease;
+
+  pointer-events: auto;
+}
+
+
+/* CLOSED STATE */
+
+#chatWindow.hidden {
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+      translateY(25px)
+      scale(0.88);
+}
+/* =========================================================
+   CHATBOT HEADER
+========================================================= */
+
+.chat-header {
+  padding: 16px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  color: white;
+
+  border-bottom:
+      1px solid rgba(255,255,255,0.08);
+
+  background:
+      rgba(255,255,255,0.03);
+}
+
+
+/* =========================================================
+   CHATBOT HEADER INFO
+========================================================= */
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.chat-header-info > span {
+  font-size: 1.4rem;
+}
+
+.chat-header-info strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   CHATBOT HEADER ACTION BUTTONS
+========================================================= */
+
+.chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* =========================================================
+   COMMON CHAT CONTROL BUTTON
+========================================================= */
+
+.chat-control-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border-radius: 12px;
+
+  border:
+      1px solid rgba(255,255,255,0.12);
+
+  background:
+      rgba(255,255,255,0.06);
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+
+  box-shadow:
+      0 5px 12px rgba(0,0,0,0.25),
+      inset 0 1px 1px rgba(255,255,255,0.08);
+
+  transition:
+      transform 0.25s ease,
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   STOP RESPONSE BUTTON
+========================================================= */
+
+
+
+
+/* =========================================================
+   NEW CHAT BUTTON
+========================================================= */
+
+.new-chat-btn:hover {
+  background:
+      rgba(56,189,248,0.18);
+
+  border-color:
+      rgba(56,189,248,0.55);
+
+  transform:
+      translateY(-3px)
+      rotate(90deg)
+      scale(1.08);
+
+  box-shadow:
+      0 8px 20px rgba(56,189,248,0.28),
+      0 0 18px rgba(56,189,248,0.2),
+      inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+.new-chat-btn:active {
+  transform:
+      translateY(1px)
+      scale(0.95);
+}
+
+
+/* =========================================================
+   CHAT CONTROL BUTTON FOCUS
+========================================================= */
+
+.chat-control-btn:focus-visible {
+  outline:
+      2px solid #38bdf8;
+
+  outline-offset: 2px;
+}
+
+#chatMessages{
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#chatMessages div{
+  padding: 14px 18px;
+
+  border-radius: 18px;
+
+  max-width: 85%;
+
+  line-height: 1.5;
+
+  word-wrap: break-word;
+}
+
+#chatMessages div:nth-child(odd){
+  align-self: flex-end;
+
+  background:
+      linear-gradient(
+          135deg,
+          #38bdf8,
+          #22c55e
+      );
+
+  color: #021617;
+}
+
+#chatMessages div:nth-child(even){
+  align-self: flex-start;
+
+  background:
+      rgba(255,255,255,0.08);
+
+  color: white;
+}
+
+.chat-input-area{
+  display: flex;
+  gap: 10px;
+
+  padding: 18px;
+
+  border-top:
+      1px solid rgba(255,255,255,0.08);
+}
+
+#chatInput{
+  flex: 1;
+
+  padding: 14px 18px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 999px;
+
+  background:
+      rgba(255,255,255,0.08);
+
+  color: white;
+
+  font-size: 0.95rem;
+}
+
+#chatInput::placeholder{
+  color:
+      rgba(255,255,255,0.5);
+}
+
+#chatInput:focus{
+  box-shadow:
+      0 0 20px rgba(56,189,248,0.45);
+}
+
+#sendChatBtn{
+  border: none;
+
+  padding: 14px 22px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  background:
+      linear-gradient(
+          135deg,
+          #38bdf8,
+          #22c55e
+      );
+
+  color: #021617;
+
+  transition:
+      transform 0.3s ease;
+}
+
+#sendChatBtn:hover{
+  transform:
+      scale(1.05);
+}
+
+/* Scrollbar */
+
+#chatMessages::-webkit-scrollbar{
+  width: 6px;
+}
+
+#chatMessages::-webkit-scrollbar-thumb{
+  background:
+      rgba(255,255,255,0.2);
+
+  border-radius: 999px;
+}
+
+
+
+
+.typing-cursor{
+  display:inline-block;
+  width:8px;
+  animation:
+      blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,50%{
+      opacity:1;
+  }
+
+  51%,100%{
+      opacity:0;
+  }
+}
+
+
+.typing-cursor{
+  display:inline-block;
+  font-weight:bold;
+  margin-left:2px;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,50%{
+      opacity:1;
+  }
+
+  51%,100%{
+      opacity:0;
+  }
+}
+
+
+/* ===============================
+   AI MESSAGE FORMATTING
+================================ */
+
+.ai-message {
+  line-height: 1.6;
+}
+
+.ai-message p {
+  margin: 0 0 12px 0;
+}
+
+.ai-message p:last-child {
+  margin-bottom: 0;
+}
+
+.ai-message h1,
+.ai-message h2,
+.ai-message h3 {
+  margin: 16px 0 8px;
+  line-height: 1.3;
+}
+
+.ai-message h1 {
+  font-size: 1.35rem;
+}
+
+.ai-message h2 {
+  font-size: 1.2rem;
+}
+
+.ai-message h3 {
+  font-size: 1.08rem;
+}
+
+.ai-message ul,
+.ai-message ol {
+  margin: 8px 0 14px 22px;
+  padding-left: 10px;
+}
+
+.ai-message li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.ai-message strong {
+  font-weight: 700;
+}
+
+.ai-message table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+
+.ai-message th,
+.ai-message td {
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.ai-message th {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.ai-message blockquote {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-left: 3px solid #38bdf8;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   AI TYPING INDICATOR
+========================================================= */
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: fit-content;
+  max-width: 80%;
+
+  margin: 10px 0;
+  padding: 12px 18px;
+
+  border-radius: 18px;
+
+  background: rgba(30, 41, 59, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+
+  box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  animation: typingFloat 2s ease-in-out infinite;
+}
+
+.typing-label {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+
+/* ===============================
+ ANIMATED DOTS
+================================ */
+
+.typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #38bdf8;
+
+  box-shadow:
+      0 0 6px rgba(56, 189, 248, 0.8),
+      0 0 12px rgba(56, 189, 248, 0.4);
+
+  animation: typingBounce 1.2s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.30s;
+}
+
+
+/* ===============================
+ DOT BOUNCE ANIMATION
+================================ */
+
+@keyframes typingBounce {
+
+  0%,
+  60%,
+  100% {
+      transform: translateY(0) scale(0.8);
+      opacity: 0.5;
+  }
+
+  30% {
+      transform: translateY(-7px) scale(1.15);
+      opacity: 1;
+  }
+
+}
+
+
+/* ===============================
+ FLOATING 3D EFFECT
+================================ */
+
+@keyframes typingFloat {
+
+  0%,
+  100% {
+      transform: translateY(0);
+      box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.25),
+          inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  }
+
+  50% {
+      transform: translateY(-3px);
+      box-shadow:
+          0 13px 26px rgba(0, 0, 0, 0.35),
+          0 0 15px rgba(56, 189, 248, 0.12),
+          inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+
+}
+
+
+
+/* =========================================================
+   ANIMATED 3D STOP BUTTON
+========================================================= */
+
+#sendChatBtn.stop-mode {
+  min-width: 48px;
+  width: 48px;
+  height: 42px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+
+  background:
+      linear-gradient(
+          145deg,
+          #ef4444,
+          #b91c1c
+      );
+
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+
+  box-shadow:
+      0 6px 0 rgba(127, 29, 29, 0.7),
+      0 10px 20px rgba(239, 68, 68, 0.25),
+      0 0 14px rgba(239, 68, 68, 0.18),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+
+  animation:
+      stopButtonFloat 1.8s ease-in-out infinite;
+
+  transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease,
+      border-color 0.25s ease;
+}
+
+
+/* =========================================================
+ SQUARE STOP ICON
+========================================================= */
+
+#sendChatBtn.stop-mode .stop-icon {
+  width: 13px;
+  height: 13px;
+
+  display: block;
+
+  border-radius: 2px;
+
+  background: white;
+
+  box-shadow:
+      0 0 6px rgba(255, 255, 255, 0.7),
+      0 0 12px rgba(255, 255, 255, 0.35);
+
+  animation:
+      stopIconPulse 1.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+ 3D HOVER EFFECT
+========================================================= */
+
+#sendChatBtn.stop-mode:hover {
+  transform:
+      translateY(-4px)
+      scale(1.08);
+
+  background:
+      linear-gradient(
+          145deg,
+          #f87171,
+          #dc2626
+      );
+
+  border-color:
+      rgba(248, 113, 113, 0.8);
+
+  box-shadow:
+      0 9px 0 rgba(127, 29, 29, 0.65),
+      0 15px 28px rgba(239, 68, 68, 0.4),
+      0 0 24px rgba(239, 68, 68, 0.35),
+      inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================================
+ 3D CLICK / PRESS EFFECT
+========================================================= */
+
+#sendChatBtn.stop-mode:active {
+  transform:
+      translateY(3px)
+      scale(0.94);
+
+  box-shadow:
+      0 2px 0 rgba(127, 29, 29, 0.8),
+      0 5px 10px rgba(239, 68, 68, 0.25),
+      inset 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+ FLOATING ANIMATION
+========================================================= */
+
+@keyframes stopButtonFloat {
+
+  0%,
+  100% {
+      transform: translateY(0);
+
+      box-shadow:
+          0 6px 0 rgba(127, 29, 29, 0.7),
+          0 10px 20px rgba(239, 68, 68, 0.25),
+          0 0 12px rgba(239, 68, 68, 0.15),
+          inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  50% {
+      transform: translateY(-2px);
+
+      box-shadow:
+          0 8px 0 rgba(127, 29, 29, 0.65),
+          0 14px 25px rgba(239, 68, 68, 0.35),
+          0 0 20px rgba(239, 68, 68, 0.28),
+          inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  }
+
+}
+
+
+/* =========================================================
+ SQUARE ICON PULSE
+========================================================= */
+
+@keyframes stopIconPulse {
+
+  0%,
+  100% {
+      transform: scale(0.85);
+      opacity: 0.75;
+
+      box-shadow:
+          0 0 4px rgba(255, 255, 255, 0.5);
+  }
+
+  50% {
+      transform: scale(1.15);
+      opacity: 1;
+
+      box-shadow:
+          0 0 8px rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.45);
+  }
+
+}

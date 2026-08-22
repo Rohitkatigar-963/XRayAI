@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+xray_train_env/
+
+# Dataset
+dataset/
+
+# Model checkpoints
+checkpoints/
+
+# Local database
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated reports
+reports/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables / secrets
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.temp
+
+
+
+
+# Old / experimental models
+best_model_resnet18_old.pth
+model_old.pth
+
+# Evaluation/debug files
+misclassified_images.txt
+
+# Test images
+nn.jpeg
+pp.jpeg
+test.webp

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login – XrayAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<div class="auth-bg"></div>
+
+<div class="auth-container">
+  <div class="auth-card glass">
+    <h2>Welcome Back</h2>
+    <p>Login to access X-ray AI analysis</p>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="email" id="loginEmail" required />
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="loginPassword" required />
+        <label>Password</label>
+      </div>
+
+      <button type="submit" class="auth-btn">Login</button>
+    </form>
+
+    <div class="switch-link">
+      Don’t have an account?
+      <a href="register.html">Register</a>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

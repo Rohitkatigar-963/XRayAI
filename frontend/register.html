@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register – XrayAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<div class="auth-bg"></div>
+
+<div class="auth-container">
+  <div class="auth-card glass">
+    <h2>Create Account</h2>
+    <p>Join the AI medical analysis platform</p>
+
+    <form id="registerForm">
+      <div class="input-group">
+        <input type="text" id="regName" required />
+        <label>Full Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="regEmail" required />
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="regPassword" required />
+        <label>Password</label>
+      </div>
+
+      <button type="submit" class="auth-btn">Register</button>
+    </form>
+
+    <div class="switch-link">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>
